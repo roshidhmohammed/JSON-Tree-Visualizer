@@ -1,8 +1,12 @@
 # JSON Tree Visualizer Frontend App
 This repository contains details about the project overview, features, technologies used, and Application Architecture.
 
+## Deployment URL
+ - Live Link - https://json-tree-visualizer-tawny.vercel.app/tree-visualizer
+
 ## Project Overview
  - This application aims for transforming the JSON data provided by the user input and convert and visualize this data in a Tree.
+
 
 
 ## Features
