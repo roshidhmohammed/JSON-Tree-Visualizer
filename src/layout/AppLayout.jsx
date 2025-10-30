@@ -1,5 +1,9 @@
 import { Outlet } from "react-router-dom";
+
+// Components
 import Header from "./Header";
+
+// Alert
 import AlertToaster from "../common/AlertToaster";
 
 const AppLayout = () => {

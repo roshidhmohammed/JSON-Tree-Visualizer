@@ -1,44 +1,51 @@
 import React, { useState } from "react";
-import { sampleJsonData } from "../constants/sampleJsonData";
+
+// constant data
+import { placeholderJsonData } from "../constants/sampleJsonData";
+
+// common components
 import ButtonSecondary from "../common/ButtonSecondary";
 
 // Alert
 import { toast } from "sonner";
+
+// react navigation
 import { useNavigate } from "react-router-dom";
+
+// Redux - centralized state management
 import { useDispatch, useSelector } from "react-redux";
-import { addJsonInput } from "../utils/slices/jsonInputSlice";
+import { addJsonInput, removeJsonInput } from "../utils/slices/jsonInputSlice";
 
 const JsonEditor = () => {
-  const dispatch = useDispatch()
-  const jsonData = useSelector(store => store.jsonInput)
-  const [jsonInput, setjsonInput] = useState(JSON.stringify(jsonData) || null);
+  const dispatch = useDispatch();
+  const jsonData = useSelector((store) => store.jsonInput);
+  const [jsonInput, setjsonInput] = useState(
+    JSON.stringify(jsonData) !== "null" ? JSON.stringify(jsonData) : ""
+  );
   const navigate = useNavigate();
 
   const handleJsonInput = (e) => {
     setjsonInput(e.target.value);
-    console.log(typeof jsonInput)
   };
 
   const generateTree = () => {
     toast.dismiss();
     try {
-      if(!jsonInput){
+      if (!jsonInput) {
         toast.error("Please enter the valid JSON in the below field.");
       }
       const isJsonParse = JSON.parse(jsonInput);
-      console.log(typeof isJsonParse)
-      if(isJsonParse){
-        dispatch(addJsonInput(JSON.parse(jsonInput)))
-        navigate("/tree-visualizer")
+      if (isJsonParse) {
+        dispatch(addJsonInput(JSON.parse(jsonInput)));
+        navigate("/tree-visualizer");
       }
     } catch (error) {
-      console.log(error)
       toast.error("Invalid JSON Format. Please enter the valid JSON.");
     }
   };
 
   const resetJsonInput = () => {
-    dispatch(resetJsonInput())
+    dispatch(removeJsonInput());
     setjsonInput("");
   };
 
@@ -51,7 +58,7 @@ const JsonEditor = () => {
         <div className=" ">
           <textarea
             value={jsonInput}
-            placeholder={sampleJsonData}
+            placeholder={placeholderJsonData}
             onChange={(e) => handleJsonInput(e)}
             className=" bg-gray-800  w-full h-[45vh] overflow-y-auto p-5 rounded-md text-gray-100 focus:ring-indigo-500  focus:ring-2 focus:outline-none"
           />

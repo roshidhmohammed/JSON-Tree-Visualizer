@@ -3,44 +3,164 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer components {
-    .dark .bg-dark {
-        background-color: #0a0a0a;
+  .dark .bg-dark {
+    background-color: #0a0a0a;
+  }
 
+  .bg-dark {
+    background-color: #eceaeacb;
+  }
+
+  .dark .bg-pattern {
+    background-image: radial-gradient(circle at 25% 25%,
+        #222222 0.5px,
+        transparent 1px),
+      radial-gradient(circle at 75% 75%, #111111 0.5px, transparent 1px);
+    background-size: 10px 10px;
+    image-rendering: pixelated;
+    z-index: 99;
+  }
+
+  .bg-pattern {
+    background-image: radial-gradient(circle at 25% 25%,
+        #d3d2d2 0.5px,
+        transparent 1px),
+      radial-gradient(circle at 75% 75%, #c4c0c0 0.5px, transparent 1px);
+    background-size: 10px 10px;
+    image-rendering: pixelated;
+    z-index: 99;
+  }
+
+  .dark .react-flow__node {
+    background-color: #1e293b !;
+    color: #f8fafc;
+    border-color: #38bdf8;
+  }
+
+  .dark .react-flow__edge-path {
+    stroke: var(--edge-color, #dbc6c6) !important;
+    stroke-width: 2px !important;
+  }
+
+  .react-flow__edge-path {
+    stroke: var(--edge-color, #050505) !important;
+    stroke-width: 2px !important;
+  }
+
+  .edge-highlight path {
+    stroke: #f59e0b !important;
+    stroke-width: 3px !important;
+  }
+
+  @keyframes nodePing {
+
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5);
     }
 
-    .bg-light {
-        background-color: #cf0b0b;
-
+    50% {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px 5px rgba(245, 158, 11, 0.4);
     }
+  }
 
-    .dark .bg-pattern {
-        background-image:       radial-gradient(circle at 25% 25%, #222222 0.5px, transparent 1px),
-        radial-gradient(circle at 75% 75%, #111111 0.5px, transparent 1px);
-        background-size: 10px 10px;
-        image-rendering: pixelated;
-        z-index: 99;
-    }
+  .node-ping {
+    animation: nodePing 1.2s;
+  }
 
-     .bg-pattern {
-        background-image:       radial-gradient(circle at 25% 25%, #d1c8c8 0.5px, transparent 1px),
-        radial-gradient(circle at 75% 75%, #c4c0c0 0.5px, transparent 1px);
-        background-size: 10px 10px;
-        image-rendering: pixelated;
-        z-index: 99;
-    }
+  .toast {
+    background: #0a0a0a;
+    color: #ffffff;
+    border-radius: 8px;
+    font-weight: 500;
+  }
 
-    @keyframes nodePing {
-        0%, 100% {
-          transform: scale(1);
-          box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5);
-        }
-        50% {
-          transform: scale(1.1);
-          box-shadow: 0 0 10px 5px rgba(245, 158, 11, 0.4);
-        }
-      }
-      
-      .node-ping {
-        animation: nodePing 1.2s;
-      }
+  .toast-desc {
+    color: #e5e5e5;
+  }
+
+  /* node styles */
+
+  .react-flow__node.rf-node {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border: 2px solid #14b8a6 !important;
+    border-radius: 10px !important;
+    padding: px !important;
+    height: 90px !important;
+    min-width: 180px !important;
+    font-weight: 600 !important;
+    font-size: 25px !important;
+    cursor: pointer !important;
+    color: white !important;
+    text-align: center !important;
+    transition: all 0.3s ease;
+    background-color: transparent !important;
+  }
+
+  .react-flow__node.rf-node-object {
+    background-color: #30178b !important;
+    border-color: #302068 !important;
+  }
+
+  .react-flow__node.rf-node-array {
+    background-color: #156632 !important;
+    border-color: #154426 !important;
+  }
+
+  .react-flow__node.rf-node-primitive {
+    background-color: #176b64 !important;
+    border-color: #0d423e !important;
+  }
+
+  .react-flow__node.rf-node-highlight {
+    background-color: #ce1919 !important;
+    color: white !important;
+    border-color: #a71212 !important;
+  }
+
+  .dark .react-flow__node.rf-node-object {
+    background-color: #d10fa7 !important;
+  }
+
+  .dark .react-flow__node.rf-node-array {
+    background-color: #1a9649 !important;
+  }
+
+  .dark .react-flow__node.rf-node-primitive {
+    background-color: #114642 !important;
+  }
+
+  .dark .react-flow__node.rf-node-highlight {
+    background-color: #4bce0f !important;
+    color: black !important;
+  }
+
+  .rf-node.default {
+    background-color: #0d9488;
+    color: #fff;
+    border: 2px solid #14b8a6;
+    transition: all 0.3s ease;
+  }
+
+  .rf-node.highlight {
+    background-color: #fbbf24;
+    color: #000;
+    border: 3px solid #f59e0b;
+    animation: pingHighlight 1s ease-in-out infinite;
+  }
+
+  .rf-edge.default path {
+    stroke: #94a3b8;
+    stroke-width: 1.5;
+  }
+
+  .rf-edge.highlight path {
+    stroke: #f59e0b;
+    stroke-width: 3;
+  }
 }

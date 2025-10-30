@@ -1,35 +1,29 @@
 import React from "react";
-import { MdDarkMode } from "react-icons/md";
-import { MdOutlineLightMode } from "react-icons/md";
+
+// Dark && Light Theme
 import { useTheme } from "../contexts/ThemeContext";
 
 const ThemeToggleButton = () => {
-  const { theme, toggleTheme } = useTheme();
-  console.log(theme);
+  const { toggleTheme } = useTheme();
 
   return (
     <>
-      <div className="relative">
-        <div className="block h-8 w-14">
-          {theme === "dark" ? (
-            <button
-              onClick={toggleTheme}
-              className=" border dark:bg-gray-500 bg-gray-800 rounded-md p-1 px-2  cursor-pointer dark:hover:bg-gray-400"
-            >
-              <MdOutlineLightMode
-                size={25}
-                className=" text-white transition duration-500"
-              />
-            </button>
-          ) : (
-            <button
-              onClick={toggleTheme}
-              className=" border dark:bg-gray-500 bg-gray-800 rounded-md p-1 px-2  cursor-pointer dark:hover:bg-gray-400"
-            >
-              <MdDarkMode size={25} className="  transition duration-500 text-gray-100" />
-            </button>
-          )}
-        </div>
+      <div>
+        <label className="inline-flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            value=""
+            onChange={toggleTheme}
+            className="sr-only peer"
+          />
+          <div
+            className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4
+   peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-100 peer-checked:after:translate-x-full
+    rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px]
+     dark:after:bg-black after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all
+      dark:border-gray-600 peer-checked:bg-gray-900 dark:peer-checked:bg-blue-600"
+          ></div>
+        </label>
       </div>
     </>
   );

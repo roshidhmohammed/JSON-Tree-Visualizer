@@ -15,19 +15,15 @@ const AlertToaster = () => {
           success: <TiTick className=" text-green-700 font-bold text-2xl" />,
           error: <MdError className=" text-red-700 font-bold text-2xl" />,
         }}
-
         toastOptions={{
           classNames: {
-            description: "!text-red-900",
-          },
-          style: {
-            background: "black",
-            color: "white",
+            toast: "toast",
+            description: "toast-desc",
           },
         }}
       />
     </div>
-  )
-}
+  );
+};
 
-export default AlertToaster
+export default AlertToaster;
