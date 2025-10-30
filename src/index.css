@@ -38,7 +38,7 @@
   }
 
   .dark .react-flow__edge-path {
-    stroke: var(--edge-color, #dbc6c6) !important;
+    stroke: var(--edge-color,#dbc6c6) !important;
     stroke-width: 2px !important;
   }
 
